@@ -5,17 +5,44 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import CategoriesScreen from './screens/CategoriesScreen';
 import MealsOverviewScreen from './screens/MealsOverviewScreen';
+import MealDetailScreen from './screens/MealDetailScreen';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <>
-      <StatusBar style="dark" />
+      <StatusBar style="light" />
       <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
-          <Stack.Screen name="MealsOverview" component={MealsOverviewScreen} />
+        <Stack.Navigator screenOptions={
+          {
+            cardStyle: { backgroundColor: '#3f2f25' },  // background color for all screens instead of contentStyle
+            headerStyle: {
+              backgroundColor: '#2c211a',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }
+        }>
+          <Stack.Screen name="MealsCategories"
+            component={CategoriesScreen}
+            options={{
+              title: 'All Categories',
+            }}
+          />
+          <Stack.Screen name="MealsOverview"
+            component={MealsOverviewScreen}
+            options={{
+              title: 'Meals Overview',
+            }}
+          />
+          <Stack.Screen name="MealDetail"
+            component={MealDetailScreen}
+
+
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
@@ -25,7 +52,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
